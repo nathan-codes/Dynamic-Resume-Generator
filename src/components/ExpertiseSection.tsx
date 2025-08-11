@@ -9,7 +9,7 @@ const ExpertiseSection: React.FC<ExpertiseSectionProps> = ({ expertise }) => {
     <div className="mb-6">
       {/* Section Title */}
 
-      {/* Horizontal line separator above content */}
+    
       <div className="w-full h-px bg-gray-700 mb-3"></div>
 
       <h3 className="text-lg font-bold text-gray-800 mb-3">EXPERTISE</h3>
