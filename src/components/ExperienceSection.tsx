@@ -63,7 +63,7 @@ const formatResponsibilities = (jobDescription: string): string[] => {
     .split(".")
     .map((sentence) => sentence.trim())
     .filter((sentence) => sentence.length > 0)
-    .slice(0, 4); // Limit to 4 responsibilities for better layout
+   
 };
 
 export default ExperienceSection;
