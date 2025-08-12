@@ -45,7 +45,7 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({
         {/* Right side - Contact Information */}
         <div className="text-left lg:text-right space-y-4 sm:space-y-5 lg:space-y-6 mt-6 lg:mt-0 lg:pr-[40px]">
           <div className="flex items-center justify-start lg:justify-end space-x-3">
-            <span className="w-full sm:w-52 lg:w-52 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase leading-none">
+            <span className="w-full sm:w-52 lg:w-52 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold  uppercase leading-none">
               {phone}
             </span>
             <img
@@ -55,7 +55,7 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({
             />
           </div>
           <div className="flex items-center justify-start lg:justify-end space-x-3">
-            <span className="w-full sm:w-52 lg:w-52 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase leading-none">
+            <span className="w-full sm:w-52 lg:w-52 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold  uppercase leading-none">
               {email}
             </span>
             <img
@@ -65,7 +65,7 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({
             />
           </div>
           <div className="flex items-center justify-start lg:justify-end space-x-3">
-            <span className="w-full sm:w-52 lg:w-52 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase leading-none">
+            <span className="w-full sm:w-52 lg:w-52 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold  uppercase leading-none">
               {website}
             </span>
             <img
@@ -75,7 +75,7 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({
             />
           </div>
           <div className="flex items-center justify-start lg:justify-end space-x-3">
-            <span className="w-full sm:w-53 lg:w-52   text-left lg:text-right justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase leading-none">
+            <span className="w-full sm:w-53 lg:w-52   text-left lg:text-right justify-start text-gray-700 text-xs font-semibold  uppercase leading-none">
               {location}
             </span>
             <img

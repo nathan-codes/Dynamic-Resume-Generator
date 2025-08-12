@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
-@theme {
-  --font-sans: "Open Sans", sans-serif;
-}
-
-/* Apply Open Sans globally to the entire project */
 * {
   font-family: "Open Sans", sans-serif;
 }
@@ -17,30 +10,22 @@ body {
   line-height: 1.6;
 }
 
-/* Ensure all text elements inherit the font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-div,
-button,
-input,
-textarea,
-select {
-  font-family: "Open Sans", sans-serif;
+/* Global button and interactive element styling */
+button, 
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer;
 }
 
-/* Custom styling for expertise section bullets */
-.expertise-bullet {
-  width: 3px;
-  height: 3px;
-  background-color: #374151;
-  border-radius: 50%;
-  margin-top: 8px;
-  margin-right: 8px;
-  flex-shrink: 0;
+/* Ensure form inputs have proper cursor */
+input, 
+textarea, 
+select {
+  cursor: text;
+}
+
+/* Links should have pointer cursor */
+a {
+  cursor: pointer;
 }
