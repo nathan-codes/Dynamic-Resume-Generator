@@ -1,13 +1,12 @@
-import React from 'react';
-import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { logout } from '../store/slices/authSlice';
-import { useResumeData } from '../hooks/useResumeData';
-import Resume from '../components/Resume';
-import { transformResumeData } from '../utils/dataTransform';
+import React from "react";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { logout } from "../store/slices/authSlice";
+import { useResumeData } from "../hooks/useResumeData";
+import Resume from "../components/Resume";
 
 const ResumePage: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
-  const { data: resumeData, isLoading, error, refetchResume } = useResumeData();
+  const { data: resumeData, isLoading, error, refetch } = useResumeData();
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
@@ -34,10 +33,12 @@ const ResumePage: React.FC = () => {
               Error Loading Resume
             </h3>
             <p className="text-sm text-red-700 mb-4">
-              {error instanceof Error ? error.message : 'An error occurred while loading your resume data.'}
+              {error instanceof Error
+                ? error.message
+                : "An error occurred while loading your resume data."}
             </p>
             <button
-              onClick={() => refetchResume()}
+              onClick={() => refetch()}
               className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
             >
               Try Again
@@ -75,7 +76,7 @@ const ResumePage: React.FC = () => {
               </h1>
               {user && (
                 <p className="text-sm text-gray-600">
-                  Welcome, {user.fullName || user.email}
+                  Welcome, {user.fullName}
                 </p>
               )}
             </div>
@@ -92,7 +93,7 @@ const ResumePage: React.FC = () => {
       {/* Resume Content */}
       <main className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <Resume data={transformResumeData(resumeData)} />
+          <Resume data={resumeData} />
         </div>
       </main>
     </div>

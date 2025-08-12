@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { authAPI } from '../../services/api';
-import { LoginCredentials, AuthResponse } from '../../types/auth';
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { authService } from "../../services/authService";
+import { LoginCredentials, AuthResponse } from "../../types/auth";
 
 interface AuthState {
   isAuthenticated: boolean;
-  user: AuthResponse['user'] | null;
+  user: AuthResponse["user"] | null;
   accessToken: string | null;
   loading: boolean;
   error: string | null;
@@ -13,36 +13,36 @@ interface AuthState {
 const initialState: AuthState = {
   isAuthenticated: false,
   user: null,
-  accessToken: localStorage.getItem('accessToken'),
+  accessToken: localStorage.getItem("accessToken"),
   loading: false,
   error: null,
 };
 
 // Async thunk for login
 export const loginUser = createAsyncThunk(
-  'auth/login',
+  "auth/login",
   async (credentials: LoginCredentials, { rejectWithValue }) => {
     try {
-      const response: AuthResponse = await authAPI.login(credentials);
-      
+      const response: AuthResponse = await authService.login(credentials);
+
       // Store token and user data in localStorage
-      localStorage.setItem('accessToken', response.accessToken);
-      localStorage.setItem('user', JSON.stringify(response.user));
-      
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("user", JSON.stringify(response.user));
+
       return response;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'Login failed');
+      return rejectWithValue(error.response?.data?.message || "Login failed");
     }
   }
 );
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     logout: (state) => {
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('user');
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("user");
       state.isAuthenticated = false;
       state.user = null;
       state.accessToken = null;
@@ -52,8 +52,8 @@ const authSlice = createSlice({
       state.error = null;
     },
     initializeAuth: (state) => {
-      const storedAccessToken = localStorage.getItem('accessToken');
-      const storedUser = localStorage.getItem('user');
+      const storedAccessToken = localStorage.getItem("accessToken");
+      const storedUser = localStorage.getItem("user");
 
       if (storedAccessToken) {
         state.accessToken = storedAccessToken;
@@ -74,13 +74,16 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, action: PayloadAction<AuthResponse>) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.accessToken = action.payload.accessToken;
-        state.user = action.payload.user;
-        state.error = null;
-      })
+      .addCase(
+        loginUser.fulfilled,
+        (state, action: PayloadAction<AuthResponse>) => {
+          state.loading = false;
+          state.isAuthenticated = true;
+          state.accessToken = action.payload.accessToken;
+          state.user = action.payload.user;
+          state.error = null;
+        }
+      )
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;

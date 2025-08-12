@@ -1,20 +1,15 @@
 import React from "react";
 import AwardItem from "./AwardItem";
-
-interface Award {
-  year: string;
-  award: string;
-  institution: string;
-}
+import { Education as ApiEducation } from "../types/resume";
+import { formatDateRange } from "../utils/dateUtils";
 
 interface AwardsSectionProps {
-  awards: Award[];
+  awards: ApiEducation[];
 }
 
 const AwardsSection: React.FC<AwardsSectionProps> = ({ awards }) => {
   return (
     <div className="mb-6">
-      {/* Horizontal line separator above content */}
       <div className="w-full h-px bg-gray-700 mb-3"></div>
 
       {/* Section Title */}
@@ -25,8 +20,8 @@ const AwardsSection: React.FC<AwardsSectionProps> = ({ awards }) => {
         {awards.map((award, index) => (
           <AwardItem
             key={index}
-            year={award.year}
-            award={award.award}
+            year={formatDateRange(award.start_date, award.end_date)}
+            award={award.qualification}
             institution={award.institution}
           />
         ))}

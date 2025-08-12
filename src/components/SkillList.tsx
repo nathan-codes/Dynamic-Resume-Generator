@@ -11,20 +11,19 @@ interface SkillListProps {
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-8 gap-y-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
       {skills.map((skill, index) => (
-        <div key={index} className="space-y-3">
+        <div key={index} className="space-y-0">
           {/* Skill Name */}
-          <div className="justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase">
+          <div className="justify-start text-gray-700 text-xs font-semibold uppercase">
             {skill.name}
           </div>
-
           {/* Progress Bar */}
-          <div className="w-full md:w-60 h-2.5 border border-gray-700 bg-white">
+          <div className="w-full  border border-[#323B4C]  h-[12px]">
             <div
-              className="bg-gray-800 h-2.5 transition-all duration-300"
+              className="bg-[#323B4C] border border-[#323B4C]  h-[11px]"
               style={{
-                width: `${index < 4 ? 75 : 85}%`, 
+                width: "75%",
               }}
             ></div>
           </div>

@@ -29,15 +29,15 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({
         {/* Left side - Name and Title */}
         <div className="flex-1">
           <div className="w-full lg:w-80 h-auto lg:h-24 justify-start">
-            <span className="text-gray-700 text-3xl sm:text-4xl lg:text-5xl font-normal font-['Open_Sans'] uppercase leading-tight lg:leading-[47.50px]">
+            <span className="text-gray-700 text-3xl sm:text-4xl lg:text-5xl font-normal  uppercase leading-tight lg:leading-[47.50px]">
               {firstName}
               <br />
             </span>
-            <span className="text-gray-700 text-3xl sm:text-4xl lg:text-5xl font-extrabold font-['Open_Sans'] uppercase leading-tight lg:leading-[47.50px] ">
+            <span className="text-gray-700 text-3xl sm:text-4xl lg:text-5xl font-extrabold  uppercase leading-tight lg:leading-[47.50px] ">
               {lastName}
             </span>
           </div>
-          <div className="w-full lg:w-52 h-auto lg:h-7 justify-start text-gray-700 text-lg sm:text-xl font-semibold font-['Open_Sans'] uppercase mt-2 lg:mt-[8px]">
+          <div className="w-full  justify-start text-gray-700 text-lg sm:text-xl font-semibold  uppercase mt-2 lg:mt-[8px]">
             {title}
           </div>
         </div>
@@ -75,7 +75,7 @@ const ResumeHeader: React.FC<ResumeHeaderProps> = ({
             />
           </div>
           <div className="flex items-center justify-start lg:justify-end space-x-3">
-            <span className="w-full sm:w-64 lg:w-64 text-left lg:text-right justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase leading-none">
+            <span className="w-full sm:w-53 lg:w-52   text-left lg:text-right justify-start text-gray-700 text-xs font-semibold font-['Open_Sans'] uppercase leading-none">
               {location}
             </span>
             <img

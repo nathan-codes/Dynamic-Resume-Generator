@@ -6,59 +6,28 @@ import ExpertiseSection from "./ExpertiseSection";
 import AwardsSection from "./AwardsSection";
 import ExperienceSection from "./ExperienceSection";
 import SkillsSection from "./SkillsSection";
-
-interface ResumeData {
-  header: {
-    firstName: string;
-    lastName: string;
-    title: string;
-    phone: string;
-    email: string;
-    website: string;
-    location: string;
-  };
-  profile: string;
-  education: Array<{
-    year: string;
-    degree: string;
-    university: string;
-  }>;
-  expertise: string[];
-  awards: Array<{
-    year: string;
-    award: string;
-    institution: string;
-  }>;
-  experience: Array<{
-    title: string;
-    company: string;
-    date: string;
-    responsibilities: string[];
-  }>;
-  skills: Array<{
-    name: string;
-    proficiency: number;
-  }>;
-}
+import { Resume as ResumeType } from "../types/resume";
 
 interface ResumeProps {
-  data: ResumeData;
+  data: ResumeType;
 }
 
 const Resume: React.FC<ResumeProps> = ({ data }) => {
+  const resumeData = data.resume;
+
   return (
     <div className="max-w-[1106px] mx-auto bg-white shadow-lg">
       {/* Resume Container */}
       <div className="p-8">
         {/* Header */}
         <ResumeHeader
-          firstName={data.header.firstName}
-          lastName={data.header.lastName}
-          title={data.header.title}
-          phone={data.header.phone}
-          email={data.header.email}
-          website={data.header.website}
-          location={data.header.location}
+          firstName={resumeData.contact.first_name}
+          lastName={resumeData.contact.last_name}
+          title={resumeData.work_history[0].job_title}
+          phone={resumeData.contact.phone_number}
+          email={resumeData.contact.email}
+          website={resumeData.contact.email}
+          location={`${resumeData.contact.city}, ${resumeData.contact.country}`}
         />
 
         {/* Main Content - Two Column Layout */}
@@ -66,28 +35,30 @@ const Resume: React.FC<ResumeProps> = ({ data }) => {
           {/* Left Column */}
           <div className="lg:w-2/5 space-y-6 mt-[8px]">
             {/* Profile Section */}
-            <ProfileSection profile={data.profile} />
+            <ProfileSection profile={resumeData.summary.prof_summary} />
 
             {/* Education Section */}
-            <EducationSection education={data.education} />
+            <EducationSection education={resumeData.education} />
 
             {/* Expertise Section */}
-            <ExpertiseSection expertise={data.expertise} />
+            <ExpertiseSection
+              expertise={resumeData.skills.map((skill) => skill.name)}
+            />
 
-            {/* Awards Section */}
-            <AwardsSection awards={data.awards} />
+            {/* Awards Section - Only show if we have awards data */}
+            <AwardsSection awards={resumeData.education} />
           </div>
 
           {/* Vertical Divider */}
-          <div className="hidden lg:block w-px bg-gray-700 mx-4"></div>
+          <div className="hidden lg:block w-px bg-gray-700 mx-3"></div>
 
           {/* Right Column */}
           <div className="lg:w-3/5 space-y-6 mt-[8px]">
             {/* Experience Section */}
-            <ExperienceSection experience={data.experience} />
+            <ExperienceSection experience={resumeData.work_history} />
 
             {/* Skills Section */}
-            <SkillsSection skills={data.skills} />
+            <SkillsSection skills={resumeData.skills} />
           </div>
         </div>
       </div>

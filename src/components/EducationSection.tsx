@@ -1,14 +1,10 @@
 import React from "react";
 import EducationItem from "./EducationItem";
-
-interface Education {
-  year: string;
-  degree: string;
-  university: string;
-}
+import { Education as ApiEducation } from "../types/resume";
+import { formatDateRange } from "../utils/dateUtils";
 
 interface EducationSectionProps {
-  education: Education[];
+  education: ApiEducation[];
 }
 
 const EducationSection: React.FC<EducationSectionProps> = ({ education }) => {
@@ -25,9 +21,9 @@ const EducationSection: React.FC<EducationSectionProps> = ({ education }) => {
         {education.map((edu, index) => (
           <EducationItem
             key={index}
-            year={edu.year}
-            degree={edu.degree}
-            university={edu.university}
+            year={formatDateRange(edu.start_date, edu.end_date)}
+            degree={edu.qualification}
+            university={edu.institution}
           />
         ))}
       </div>

@@ -21,7 +21,6 @@ A React-based resume generator application with authentication and dynamic data 
 
 - **Login**: `POST https://api.revampinsights.com/auth/login`
 - **Get All Resumes**: `GET https://api.revampinsights.com/legacy/resume?page=${page}&limit=${limit}`
-- **Get Resume by ID**: `GET https://api.revampinsights.com/legacy/resume/:id`
 
 ## Getting Started
 
@@ -74,7 +73,7 @@ src/
 
 ### **Data Flow**
 1. **Authentication**: User logs in → Redux stores auth state → TanStack Query uses stored token
-2. **Resume Data**: TanStack Query fetches resumes → Gets first resume ID → Fetches detailed resume data
+2. **Resume Data**: TanStack Query fetches all resumes → Selects first resume from the list → Transforms and renders data
 3. **Caching**: TanStack Query provides automatic caching, background updates, and error handling
 
 ### **Routing**
@@ -95,9 +94,8 @@ src/
 
 1. After authentication, TanStack Query fetches all available resumes
 2. Selects the first resume from the list
-3. Fetches detailed resume data by ID
-4. Transforms the API response to match the Resume component's expected format
-5. Renders the resume with dynamic data
+3. Transforms the API response to match the Resume component's expected format
+4. Renders the resume with dynamic data
 6. Provides automatic caching and background updates
 
 ## Technologies Used

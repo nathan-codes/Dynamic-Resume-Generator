@@ -14,29 +14,29 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   responsibilities,
 }) => {
   return (
-    <div className="mb-4 last:mb-0">
+    <div className="mb-3 last:mb-0">
       {/* Job Title and Date */}
       <div className="justify-start">
-        <span className="text-neutral-700 text-base font-extrabold uppercase">
-          {title}
+        <span className="text-neutral-700 text-xs font-extrabold font-['Open_Sans'] uppercase">
+          {title} |
         </span>
-        <span className="text-neutral-700 text-xl mx-3 font-semibold uppercase">
-          {" | "}
+        <span className="text-neutral-700 text-xs font-semibold font-['Open_Sans'] uppercase">
+          {" "}
         </span>
-        <span className="text-neutral-700 text-xs font-semibold uppercase">
+        <span className="text-neutral-700 text-xs font-semibold font-['Open_Sans'] uppercase">
           {date}
         </span>
       </div>
 
       {/* Company Name */}
-      <div className="justify-start text-[#444440] text-[15px] font-semibold font-['Open_Sans'] uppercase">
+      <div className="text-gray-600 text-xs font-bold uppercase mb-0">
         {company}
       </div>
 
       {/* Responsibilities */}
-      <div className="space-y-1">
+      <div className="">
         {responsibilities.map((responsibility, index) => (
-          <div key={index} className="text-gray-700 leading-relaxed">
+          <div key={index} className="text-gray-700 text-sm font-[400] leading-relaxed">
             {responsibility}
           </div>
         ))}

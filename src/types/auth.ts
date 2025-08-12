@@ -20,6 +20,6 @@ export interface AuthResponse {
     createdAt: string;
     updatedAt: string;
   };
-  accessToken: string; // This already includes "Bearer "
+  accessToken: string; 
   expiresIn: string;
 }
